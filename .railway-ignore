@@ -1,0 +1,13 @@
+node_modules/
+.git/
+.env
+.env.backup
+tests/
+storage/logs/
+storage/framework/cache/
+*.log
+*.md
+!DEPLOYMENT.md
+.vscode/
+.idea/
+.phpactor.json

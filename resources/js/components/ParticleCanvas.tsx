@@ -25,9 +25,9 @@ interface Particle {
 const ParticleCanvas: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mouseRef = useRef({ x: -9999, y: -9999 });
-    let animationFrameId: number;
 
     useEffect(() => {
+        let animationFrameId: number;
         const canvas = canvasRef.current;
         if (!canvas) return;
 
