@@ -1,0 +1,83 @@
+/* Full-bleed background wrapper */
+.stack-wrap {
+    @apply sticky w-full bg-[var(--color-background)];
+}
+
+/* Container for the whole section (original layout preserved) */
+.stack-area {
+    @apply sticky flex min-h-screen w-full flex-col py-16 text-gray-200;
+    /* Standardize horizontal padding with other sections */
+    @apply px-6 lg:px-8;
+    /* Constrain to the same max width and center like other sections */
+    @apply ml-auto mr-auto max-w-[80rem];
+    @apply lg:flex-row lg:py-0;
+}
+
+/* Left side content (text) */
+.left {
+    @apply z-10 flex flex-col items-center justify-center text-center;
+    /* Remove overly large horizontal padding to align with container */
+    @apply lg:sticky lg:top-0 lg:left-0 lg:h-screen lg:basis-1/2 lg:items-start lg:text-left;
+}
+
+/* Right side content (cards) */
+.right {
+    @apply relative mt-12 flex h-[350px] w-full items-center justify-center;
+    @apply lg:sticky lg:top-0 lg:mt-0 lg:h-screen lg:basis-1/2;
+}
+
+/* Individual card styling */
+.card {
+    @apply absolute flex h-[300px] w-[280px] flex-col justify-start rounded-2xl border bg-white/5 p-6 text-left backdrop-blur-lg transition-all duration-500 ease-in-out;
+    @apply lg:top-1/2 lg:left-1/2 lg:h-[350px] lg:w-[350px] lg:-translate-x-1/2 lg:-translate-y-1/2 lg:p-8 lg:hover:scale-[1.03] lg:hover:border-white/20 lg:hover:shadow-2xl lg:hover:shadow-[#06B6D4]/10;
+}
+
+/* Navigation buttons for mobile slider */
+.nav-button {
+    @apply absolute top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-all duration-300 hover:bg-white/20 lg:hidden;
+}
+.prev-button {
+    @apply left-2 sm:left-8;
+}
+.next-button {
+    @apply right-2 sm:right-8;
+}
+
+/* --- UPDATED --- */
+/* Card Icon Styling */
+.card-icon {
+    /* Added a transition and a scale effect on hover (desktop) */
+    @apply mx-auto mb-3 h-8 w-8 transition-transform duration-300 sm:mb-5 sm:h-12 sm:w-12 ;
+    color: #06B6D4;
+    /* Added a drop shadow for a cool glowing effect */
+    filter: drop-shadow(0 0 6px #22D3EE);
+}
+
+/* --- UPDATED --- */
+/* Card Title Styling */
+.sub {
+    @apply mb-2 text-center text-base font-bold sm:mb-4 sm:text-lg lg:text-2xl;
+    @apply bg-gradient-to-r from-white via-cyan-200 to-cyan-300 bg-clip-text text-transparent;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* --- UPDATED --- */
+/* Card Content Styling */
+.content {
+    @apply text-center text-xs font-normal mt-4 text-gray-200 opacity-80 transition-opacity duration-300;
+    @apply leading-relaxed sm:text-sm lg:text-base;
+}
+.sub {
+    @apply mb-2 text-center text-base font-bold text-white sm:mb-4 sm:text-lg lg:text-2xl;
+}
+.title {
+    @apply w-full max-w-[440px] text-2xl leading-snug font-bold sm:text-3xl md:text-4xl md:leading-[45px] lg:text-[48px] lg:leading-[55px];
+}
+
+.sub-title {
+    @apply mx-auto mt-5 w-full max-w-[420px] text-sm text-gray-400 sm:text-base lg:mx-0;
+}
+
+.sub-title button {
+    @apply mt-6 cursor-pointer rounded-full border-none bg-primary-600 px-6 py-3 text-xs text-white transition-all duration-300 outline-none hover:scale-[1.1] hover:bg-primary-400 sm:mt-8 sm:px-[30px] sm:py-[15px] sm:text-sm;
+}

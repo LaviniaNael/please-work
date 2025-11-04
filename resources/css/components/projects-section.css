@@ -1,0 +1,315 @@
+@import 'tailwindcss';
+
+/* --- Section & Header Styles (Keep consistency) --- */
+.projects-section {
+    @apply overflow-hidden bg-[var(--color-background)] py-24 text-white sm:py-32;
+}
+
+.projects-container {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
+}
+
+.projects-header {
+    @apply mb-16 text-center;
+}
+
+.projects-title {
+    @apply mb-4 w-full text-3xl font-bold sm:text-4xl;
+}
+
+.projects-subtitle {
+    @apply mx-auto mt-4 w-full text-lg text-gray-300;
+}
+
+/* --- Carousel & Navigation (Mostly the same) --- */
+.nav-arrow {
+    @apply absolute top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/80 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-white/40 hover:bg-black/60 hover:text-white;
+}
+
+.nav-arrow-left {
+    @apply left-0 xl:-left-8;
+}
+
+/* Move arrows outside on larger screens */
+.nav-arrow-right {
+    @apply right-0 xl:-right-8;
+}
+
+.nav-arrow-rtl-left {
+    @apply right-0 xl:-right-8;
+}
+
+.nav-arrow-rtl-right {
+    @apply left-0 xl:-left-8;
+}
+
+.projects-carousel {
+    @apply flex snap-x snap-mandatory overflow-x-auto scroll-smooth px-10 py-5;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    perspective: 1000px;
+    /* ✨ ADDED: Enable 3D perspective for child elements */
+}
+
+.projects-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.projects-carousel-rtl {
+    @apply flex-row-reverse;
+}
+
+/* --- ✨ NEW 3D Project Card Style ✨ --- */
+.project-card {
+    @apply relative h-[280px] w-[380px] flex-shrink-0 cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-gray-800 transition-transform duration-500 ease-out;
+    transform-style: preserve-3d !important;
+    transform: rotateY(15deg) rotateX(5deg) scale(0.95) !important;
+    /* Ensure proper clipping for 3D transforms */
+    clip-path: inset(0 round 16px);
+    -webkit-clip-path: inset(0 round 16px);
+    backface-visibility: hidden;
+}
+
+.project-card:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1) translateZ(30px) !important;
+    box-shadow: 0 25px 50px -12px theme('colors.black / 0.5');
+    /* Maintain clipping on hover */
+    clip-path: inset(0 round 16px);
+    -webkit-clip-path: inset(0 round 16px);
+}
+
+.project-card-image-wrapper {
+    @apply absolute inset-0 overflow-hidden;
+    /* Additional containment for 3D transforms */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.project-card-image {
+    @apply h-full w-full object-cover transition-all duration-500;
+    /* Ensure image doesn't overflow container */
+    max-width: 100%;
+    max-height: 100%;
+    transform: translateZ(0);
+}
+
+.project-card:hover .project-card-image {
+    @apply scale-110;
+    /* Keep the subtle image zoom */
+}
+
+.project-card-content {
+    @apply absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6;
+    transform: translateZ(50px) !important;
+    /* ✨ Lift content slightly forward */
+}
+
+.project-card-badge {
+    /* Reusing header badge style */
+    @apply mb-2 inline-block rounded-full border-[var(--primary-accent)] bg-[var(--primary-accent)]/20 px-3 py-1 text-xs font-semibold tracking-wider text-[var(--primary-accent)] uppercase;
+}
+
+.project-card-title {
+    @apply mb-1 text-xl leading-tight font-bold text-white;
+}
+
+.project-card-description {
+    /* Shorten description preview */
+    @apply mb-3 line-clamp-2 text-sm leading-relaxed text-gray-300;
+}
+
+.project-card-meta {
+    @apply flex items-center gap-4 text-xs text-gray-400 opacity-80;
+}
+
+.project-card-meta-item {
+    @apply flex items-center gap-1.5;
+}
+
+/* Modern Scroll indicator */
+.scroll-indicator {
+    @apply mt-10 flex justify-center;
+}
+
+.scroll-indicator-text {
+    @apply flex items-center gap-3 text-xs font-medium text-gray-500;
+}
+
+.scroll-indicator-line {
+    @apply mt-2 h-px w-12 bg-gradient-to-r from-transparent via-gray-600 to-transparent;
+}
+
+/* Modal styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+    overflow: hidden;
+}
+
+/* Updated Modal Content with unified scrollbar styles */
+.modal-content {
+    background: #7008228f;
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    scroll-behavior: smooth;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    /* --- Custom Scrollbar (Firefox) --- */
+    /* format: [thumb-color] [track-color] */
+    /* This is key to show scrollbar only when needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #9ca3af80 transparent;
+    scrollbar-width: thin;
+    /* --- Hide scrollbar for IE/Legacy Edge --- */
+    /* -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch; */
+}
+
+/* === Custom Scrollbar (WebKit: Chrome, Safari, new Edge) === */
+
+/* 1. Set the width of the entire scrollbar */
+.modal-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* 2. Style the track (the background of the scrollbar) */
+.modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 3. Style the thumb (the draggable part) */
+.modal-content::-webkit-scrollbar-thumb {
+    transition: all 0.2s ease;
+    background-color: #9ca3af80; /* A neutral, semi-transparent gray */
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+/* 4. Style the thumb on hover */
+.modal-content::-webkit-scrollbar-thumb:hover {
+    transition: all 0.2s ease;
+    background-color: #9ca3afb3; /* Make it slightly more opaque on hover */
+}
+
+.modal-image-section {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.modal-image {
+    @apply h-64 w-full object-cover;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #000108c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-content-section {
+    padding: 2rem 3rem;
+    /* flex: unset; */
+    overflow: visible;
+}
+
+.modal-badge {
+    @apply mb-3 inline-block rounded bg-cyan-400/10 px-3 py-1 text-sm font-medium text-cyan-400;
+}
+
+.modal-title {
+    @apply mb-3 text-2xl font-bold text-gray-900 text-white;
+}
+
+.modal-description {
+    @apply mb-6 leading-relaxed text-gray-400;
+}
+
+.modal-gallery-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.modal-gallery-title {
+    @apply mb-4 flex items-center gap-2 text-sm tracking-wider text-gray-100;
+}
+
+.modal-gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+
+.modal-gallery-item {
+    border-radius: 0.75rem;
+    max-width: 16em;
+    max-height: 8em;
+    flex-wrap: wrap;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    background: #f8fafc;
+}
+
+.modal-gallery-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.2);
+    border-color: #d4065c;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-backdrop {
+    @apply absolute inset-0 bg-black/90 backdrop-blur-sm;
+}
+
+.lightbox-content {
+    @apply relative max-h-[95vh] max-w-[95vw];
+}
+
+.lightbox-image {
+    @apply max-h-[500px] max-w-full rounded-xl object-contain shadow-2xl;
+}

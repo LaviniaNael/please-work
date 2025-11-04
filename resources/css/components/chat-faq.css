@@ -1,0 +1,60 @@
+.faq-chat-window {
+    @apply w-full max-w-4xl mx-auto bg-[#250a17] border border-white/10 rounded-2xl shadow-2xl backdrop-blur-lg;
+}
+
+.faq-question-prompts {
+    @apply relative flex items-center gap-4 overflow-x-auto p-6 border-b border-white/10;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+.faq-question-prompts::-webkit-scrollbar {
+    @apply hidden; /* Chrome, Safari */
+}
+
+.faq-prompt-button {
+    @apply text-center text-sm font-medium text-gray-300 bg-white/5 p-3 rounded-lg border border-transparent transition-all duration-300;
+    @apply hover:bg-white/10 hover:border-cyan-400/50 hover:text-white;
+}
+
+.faq-chat-history {
+    @apply p-6 h-96 overflow-y-auto space-y-6;
+}
+
+/* --- Chat Bubble Styles --- */
+.chat-bubble {
+    @apply p-4 rounded-lg max-w-[80%];
+}
+
+.chat-bubble-question {
+    @apply bg-gradient-to-br from-teal-950/60 to-slate-900/80 ml-auto mr-0 max-w-[80%] px-4 py-3 text-left;
+    @apply rounded-tl-[18px] rounded-tr-[18px] rounded-bl-[18px] rounded-br-none;
+    @apply border border-teal-800/20;
+}
+
+.chat-bubble-answer {
+    @apply bg-gradient-to-br from-[#1a0812] to-slate-950/90 ml-0 mr-auto max-w-[80%] px-4 py-3 text-left;
+    @apply rounded-tl-[18px] rounded-tr-[18px] rounded-br-[18px] rounded-bl-none;
+    @apply border border-rose-950/30;
+}
+
+[dir="rtl"] .chat-bubble-question {
+    @apply text-right;
+}
+
+[dir="rtl"] .chat-bubble-answer {
+    @apply text-right;
+}
+
+.faq-prompts-wrapper {
+    @apply relative;
+}
+
+.faq-scroll-arrow {
+    @apply absolute top-1/2 z-10 -translate-y-1/2 rounded-full bg-[#074e5aec] p-2 text-white/60 transition-all duration-300;
+    @apply hover:bg-cyan-900/70 hover:text-white hover:scale-110;
+}
+
+.faq-scroll-arrow:disabled {
+    @apply cursor-not-allowed opacity-20 scale-100;
+}

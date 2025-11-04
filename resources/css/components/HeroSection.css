@@ -1,0 +1,62 @@
+.aurora-text {
+    @apply text-gray-400;
+
+    background-image: radial-gradient(600px circle at var(--x) var(--y), rgb(6, 182, 212) 0%, rgb(207, 250, 254) 25%, transparent 50%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    background-color: rgb(156 163 175);
+}
+
+/* --- Primary Button: Gradient with Hover Sheen --- */
+.btn-primary-modern {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-r from-[#22D3EE] to-[#06B6D4] p-0.5 text-sm font-semibold text-white shadow-lg;
+}
+
+.btn-primary-modern .btn-content {
+    @apply rounded-md bg-[#052a31] px-6 py-3 transition-all duration-75 ease-in;
+}
+
+.btn-primary-modern .btn-sheen {
+    @apply absolute block h-full w-full -skew-x-20 bg-white opacity-0;
+    transform: translateX(-150%);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-primary-modern:hover .btn-sheen {
+    @apply opacity-20;
+    transform: translateX(150%);
+}
+
+/* --- Secondary Button: Glassmorphism with Animated Arrow --- */
+.btn-secondary-modern {
+    @apply inline-flex items-center justify-center rounded-lg border border-[#155e75] bg-[#155e75] px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-[#0891b2];
+}
+
+/* The icon inside the secondary button */
+.btn-secondary-modern .btn-icon {
+    @apply ml-2 h-4 w-4 transition-transform duration-300;
+}
+
+/* For the About Us section's tech grid */
+.tech-icon-card {
+    @apply relative flex items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gray-800/50 p-6 backdrop-blur-sm;
+    /* Base styles for the icon container */
+}
+
+.tech-icon-glow {
+    /* Cyan Version*/
+    /* @apply absolute -inset-2 bg-cyan-400/30 opacity-0 blur-xl transition-opacity duration-300; */
+
+    /*Cyan Version */
+    @apply absolute -inset-2 bg-[#06B6D4]/40 opacity-0 blur-xl transition-opacity duration-300;
+}
+
+.tech-icon-card:hover .tech-icon-glow {
+    @apply opacity-100;
+    /* Show the glow on hover */
+}

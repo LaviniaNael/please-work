@@ -1,0 +1,96 @@
+/* Main section container */
+.services-section {
+    @apply relative w-full bg-background py-24 text-white sm:py-32;
+    overflow: visible; /* ✅ allow sticky to work */
+}
+.services-section::before {
+    content: '';
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply h-[600px] w-[600px] rounded-full;
+    background-image: radial-gradient(circle, rgba(192, 108, 132, 0.25) 0%, rgba(192, 108, 132, 0) 65%);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden; /* optional safeguard */
+}
+.services-container {
+    @apply mx-auto max-w-7xl px-6 lg:px-8;
+}
+
+/* --- UPDATED --- */
+/* Main 5-column grid for the layout */
+.services-layout-grid {
+    @apply grid grid-cols-1 gap-x-25 gap-y-16 lg:grid-cols-5 lg:items-start;
+}
+
+/* --- UPDATED --- */
+/* Left-side text content block */
+.services-text-content {
+    @apply lg:sticky lg:top-24 lg:col-span-2;
+}
+
+.services-title {
+    @apply mt-2 text-3xl font-bold tracking-tight sm:text-4xl;
+}
+
+.services-description {
+    @apply mt-6 text-lg leading-8 text-gray-300;
+}
+
+/* Right-side wrapper for the service cards */
+.services-cards-wrapper {
+    @apply lg:col-span-3;
+}
+
+/* Grid that holds the individual cards */
+.services-cards-grid {
+    @apply grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2;
+}
+
+/* Individual service card styling */
+.service-card {
+    @apply relative flex flex-col overflow-hidden rounded-2xl border-2 border-[#155e75] bg-white/5 p-8 transition-all duration-300;
+    @apply hover:border-[#06B6D4]/50;
+}
+
+/* The glowing sheen effect that animates on hover */
+.card-sheen {
+    @apply absolute top-0 -left-full h-full w-1/2;
+    transform: skewX(-25deg);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+    transition: left 0.6s ease-in-out;
+}
+/* Triggers the sheen animation when hovering over the card */
+.service-card:hover .card-sheen {
+    @apply left-full;
+}
+
+/* Card title and icon container */
+.service-card-title {
+    @apply flex items-center gap-x-3 text-lg leading-7 font-semibold;
+}
+
+.service-card-icon {
+    @apply h-8 w-8 flex-none text-[#06B6D4];
+}
+
+/* Container for the description and sub-services */
+.service-card-body {
+    @apply mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300;
+}
+
+.service-card-description {
+    @apply flex-auto;
+}
+
+.service-card-sublist {
+    @apply mt-6 space-y-3;
+}
+
+.service-card-sublist-item {
+    @apply flex items-center gap-x-2 text-sm;
+}
+
+.service-card-sublist-icon {
+    @apply h-5 w-5 text-[#06B6D4]/80;
+}

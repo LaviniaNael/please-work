@@ -1,0 +1,39 @@
+/* resources/css/components/ai-hud-section.css */
+
+.ai-hud-section {
+    @apply relative bg-background text-white py-24 sm:py-32 overflow-hidden;
+}
+
+/* --- Animated Background Grid --- */
+.ai-hud-bg {
+    @apply absolute inset-0 z-0 opacity-20;
+    background-image:
+        linear-gradient(theme('colors.cyan.400 / 0.1') 1px, transparent 1px),
+        linear-gradient(to right, theme('colors.cyan.400 / 0.1') 1px, transparent 1px);
+    background-size: 2rem 2rem;
+    animation: bg-pan 20s linear infinite;
+}
+
+@keyframes bg-pan {
+    0% { background-position: 0 0; }
+    100% { background-position: 2rem 2rem; }
+}
+
+/* --- The Feature Panels --- */
+.ai-hud-panel {
+    @apply relative bg-cyan-950/30 border border-cyan-400/20 rounded-lg p-6 backdrop-blur-sm hover:scale-120 transition-all duration-300;
+}
+
+/* --- Corner Bracket Accents --- */
+.ai-hud-panel::before,
+.ai-hud-panel::after {
+    content: '';
+    @apply absolute w-6 h-6 border-cyan-400 opacity-0 transition-all duration-300;
+}
+.ai-hud-panel::before { @apply top-[-2px] left-[-2px] border-t-3 border-l-3 rounded-tl-lg; }
+.ai-hud-panel::after { @apply bottom-[-2px] right-[-2px] border-b-3 border-r-3 rounded-br-lg; }
+
+.ai-hud-panel:hover::before,
+.ai-hud-panel:hover::after {
+    @apply opacity-100;
+}

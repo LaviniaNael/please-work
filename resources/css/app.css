@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+@import './components/custom-nav.css';
+@import './components/HeroSection.css';
+@import './components/WhyUs.css';
+@import './components/ContactUs.css';
+@import './components/ServicesSection.css';
+@import './components/projects-section.css';
+@import './components/chat-faq.css';
+@import './components/AiHudSection.css';
+@import './components/InternationalPhone.css';
+
+@source '../views/**/*.blade.php';
+@source '../js/**/*.{ts,tsx,js,jsx}';
+@source '../../app/Filament/**/*.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* primary color (Cyan) */
+    --color-primary-50: #ecfeff;
+    --color-primary-100: #cffafe;
+    --color-primary-200: #a5f3fc;
+    --color-primary-300: #67e8f9;
+    --color-primary-400: #22d3ee;
+    --color-primary: #06b6d4; /* Base */
+    --color-primary-600: #0891b2;
+    --color-primary-700: #0e7490;
+    --color-primary-800: #155e75;
+    --color-primary-900: #164e63;
+
+    /* Secondary (Cyan - set base to #22D3EE) */
+    --color-secondary-50: #ecfeff;
+    --color-secondary-100: #cffafe;
+    --color-secondary-200: #a5f3fc;
+    --color-secondary-300: #67e8f9;
+    --color-secondary-400: #22d3ee;
+    --color-secondary: #22d3ee; /* Base */
+    --color-secondary-600: #0891b2;
+    --color-secondary-700: #0e7490;
+    --color-secondary-800: #155e75;
+    --color-secondary-900: #164e63;
+
+    --color-background: #100108;
+
+    --colors-primary-accent: #f59e0b;
+    --colors-secondary-accent: #fbbf24;
+}
+
+:root {
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.87 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.87 0 0);
+    --primary-color: rgb(6, 182, 212);
+    --lighter-primary: rgb(34, 211, 238);
+    --primary-accent: #06b6d4;
+    --secondary-accent: #22d3ee;
+    --success-background: hsl(280 10% 15% / 0.8);
+    --success-border: #06b5d44d; /* This is #06B6D4 with 30% opacity */
+    --success-text: var(--secondary-accent); /* Your cyan color #22D3EE */
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(0.439 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.985 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* Cyan Version */
+
+.scramble-heading {
+    @apply font-mono text-lg font-semibold tracking-widest text-primary-400 uppercase;
+    text-shadow:
+        0 0 5px theme('colors.cyan.400 / 0.5'),
+        0 0 10px theme('colors.cyan.400 / 0.3');
+}
+.sheen-card {
+}
+
+.sheen-card .card-sheen {
+    @apply absolute top-0 left-0 block h-full w-full -skew-x-20 bg-white opacity-0;
+    transform: translateX(-150%);
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.sheen-card:hover .card-sheen {
+    @apply opacity-10;
+    transform: translateX(150%);
+}
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/*Cyan Version */
+
+/* .scramble-heading {
+    @apply font-mono text-lg font-semibold tracking-widest text-blue-400 uppercase;
+    text-shadow:
+        0 0 5px theme('colors.cyan.400 / 0.5'),
+        0 0 10px theme('colors.cyan.400 / 0.3');
+} */
+body {
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    *:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
