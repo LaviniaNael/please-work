@@ -9,8 +9,7 @@
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/",
         "lint": "eslint . --fix",
-        "types": "tsc --noEmit",
-        "postinstall": "npm run build:production"
+        "types": "tsc --noEmit"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.1",
